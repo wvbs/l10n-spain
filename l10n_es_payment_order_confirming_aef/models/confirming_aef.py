@@ -115,14 +115,8 @@ class ConfirmingAEF(object):
         fecha_proceso = fields.Date.today()
         text += self._aef_convert_text(str(fecha_proceso).replace("-", ""), 8)
         # 75 - 82 Fecha remesa
-        if self.record.date_prefered == "due":
-            fecha_planificada = fields.first(
-                self.record.payment_line_ids
-            ).ml_maturity_date
-        elif self.record.date_prefered == "now":
-            fecha_planificada = fields.Date.today()
-        else:
-            fecha_planificada = self.record.date_scheduled
+        # Para Bankinter
+        fecha_planificada = fields.Date.today()
         text += self._aef_convert_text(str(fecha_planificada).replace("-", ""), 8)
         # 83 - 102 Num contrato
         contract_cxb = self.record.payment_mode_id.aef_confirming_contract
