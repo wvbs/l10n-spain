@@ -38,14 +38,14 @@ class ConfirmingAEF(object):
                     % line.partner_id.name
                 )
             # Num Factura
-            if len(line.move_line_id.move_id.ref or "") > 15:
-                validation_errors.append(
-                    _(
-                        "- La referencia de factura %s de proveedor no puede ocupar "
-                        "más de 15 caracteres."
-                    )
-                    % line.move_line_id.move_id.ref
-                )
+            #if len(line.move_line_id.move_id.ref or "") > 15:
+            #    validation_errors.append(
+            #        _(
+            #            "- La referencia de factura %s de proveedor no puede ocupar "
+            #            "más de 15 caracteres."
+            #        )
+            #        % line.move_line_id.move_id.ref
+            #    )
             # Ciudad
             if not line.partner_id.city:
                 validation_errors.append(
